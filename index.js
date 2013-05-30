@@ -25,9 +25,6 @@ function Device(app) {
   this.G = 'say';
   this.name = 'Text-to-speech';
 
-  setTimeout(function() {
-    self.emit('data', 1);
-  }, 1);
 }
 
 Device.prototype.write = function(data) {
