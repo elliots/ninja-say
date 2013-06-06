@@ -23,8 +23,7 @@ function Device(app) {
   this.V = 0;
   this.D = 240; // display_text, should be speech
   this.G = 'say';
-  this.name = 'Text-to-speech';
-
+  this.name = 'Say - ' + require('os').hostname();
 }
 
 Device.prototype.write = function(data) {
