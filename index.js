@@ -5,11 +5,29 @@ var util = require('util'),
 util.inherits(Driver,stream);
 util.inherits(Device,stream);
 
+var command;
+exec('espeak " "', function(err) {
+    if (!err) {
+      command = "espeak";
+    }
+});
+exec('say " "', function(err) {
+    if (!err) {
+      command = "say";
+    }
+});
+
+
 function Driver(opts,app) {
   var self = this;
+  var device;
 
   app.on('client::up',function(){
-    self.emit('register', new Device(app));
+    if (command && !device) {
+      device = new Device(app);
+      self.emit('register', device);
+    }
+
   });
 
 }
@@ -21,14 +39,14 @@ function Device(app) {
   this.writeable = true;
   this.readable = false;
   this.V = 0;
-  this.D = 240; // display_text, should be speech
+  this.D = process.platform === 'darwin'? 1011 : 1010;
   this.G = 'say';
   this.name = 'Say - ' + require('os').hostname();
 }
 
 Device.prototype.write = function(data) {
-  exec('say ' + data);
-  this._app.log.info('Opening URL', url);
+  exec(command + ' "' + data + '"');
+  this._app.log.info('Text-to-speech', data);
 };
 
 module.exports = Driver;
