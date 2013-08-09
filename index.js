@@ -39,7 +39,7 @@ function Device(app) {
   this.writeable = true;
   this.readable = false;
   this.V = 0;
-  this.D = process.platform === 'darwin'? 1011 : 1010;
+  this.D = process.platform === 'darwin'? 1021 : 1020;
   this.G = 'say';
   this.name = 'Say - ' + require('os').hostname();
 }
