@@ -1,7 +1,7 @@
 {
   "name": "ninja-say",
   "version": "1.0.0",
-  "description": "A text-to-speech NinjaBlocks driver",
+  "description": "NinjaBlocks Text-to-Speech driver (Mac, Linux, Windows)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
