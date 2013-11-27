@@ -1,6 +1,7 @@
 var util = require('util'),
   stream = require('stream'),
-  exec = require('child_process').exec;
+  exec = require('child_process').exec,
+  spawn = require('child_process').spawn;
 
 util.inherits(Driver,stream);
 util.inherits(Device,stream);
@@ -45,7 +46,7 @@ function Device(app) {
 }
 
 Device.prototype.write = function(data) {
-  exec(command + ' "' + data + '"');
+  spawn(command, [data]);
   this._app.log.info('Text-to-speech', data);
 };
 

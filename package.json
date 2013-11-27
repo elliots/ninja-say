@@ -1,6 +1,6 @@
 {
   "name": "ninja-say",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NinjaBlocks Text-to-Speech driver (Mac, Linux, Windows)",
   "main": "index.js",
   "scripts": {
